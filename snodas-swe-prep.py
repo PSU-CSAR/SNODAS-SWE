@@ -367,14 +367,14 @@ def update_legacy_mapservice(newimage):
 
     Output:   None
     """
-    from arcpyExt import agsAdmin
+    from arcpy_extensions import server_admin
 
     overwriteSetting = env.overwriteOutput
     env.overwriteOutput = True
 
     try:
         try:
-            agsconnection = agsAdmin.AgsAdmin.connectWithoutToken(SERVER_ADDRESS, SERVER_PORT, ADMIN_USER, ADMIN_PSWD)
+            agsconnection = server_admin.AgsAdmin.connectWithoutToken(SERVER_ADDRESS, SERVER_PORT, ADMIN_USER, ADMIN_PSWD)
             agsconnection.stopService(LEGACY_MAPSERVICE)
         except Exception as e:
             logger.debug(e)
@@ -452,14 +452,14 @@ def update_image_service():
 
     Output:   None
     """
-    from arcpyExt import agsAdmin
+    from arcpy-extensions import server_admin
 
     # update mosaic statistics
     #arcpy.CalculateStatistics_management(MOSAICDS)
 
     # restart the service to make changes take effect
     try:
-        agsconnection = agsAdmin.AgsAdmin.connectWithoutToken(SERVER_ADDRESS, SERVER_PORT, ADMIN_USER, ADMIN_PSWD)
+        agsconnection = server_admin.AgsAdmin.connectWithoutToken(SERVER_ADDRESS, SERVER_PORT, ADMIN_USER, ADMIN_PSWD)
         agsconnection.stopService(IMAGE_SERVICE)
         agsconnection.startService(IMAGE_SERVICE)
     except Exception as e:
