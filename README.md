@@ -26,7 +26,7 @@ dependencies outside the python standard library:
 
 To install arcpy-extensions with pip available, simply:
 
-    pip install requirements.txt
+    pip install -r requirements.txt
 
 If pip is unavailable, e.g., when using the ArcGIS-installed python,
 download the arcpy-extensions package and run the include setup.py
